@@ -4,7 +4,7 @@
 #import <UIKit/UIKit.h>
 
 #import "RCTBridgeModule.h"
-#import "RCTEventDispatcher.h"
+//#import "RCTEventDispatcher.h"
 #import "RCTLog.h"
 
 @interface RNUploader : NSObject <RCTBridgeModule, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
@@ -24,21 +24,11 @@ RCT_EXPORT_METHOD(upload:(NSDictionary *)obj callback:(RCTResponseSenderBlock)ca
     _callback = callback;
     
     NSString *uploadURL   = obj[@"url"];
-    NSArray *filePath        = obj[@"filePath"];
+    NSString *filePath        = obj[@"filePath"];
     
     // 图片数据
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
-    [uploadFile uploadFileWithURL:[NSURL URLWithString:uploadURL] data:data];
-}
-
-/**
- *  上传指定二进制数据
- *  @params NSURL 提交的URL
- *  @params NSData 提交的数据
- */
-- (void)uploadFile:(NSURL *)url data:(NSData *)data {
-    
-    NSMutableString *str = [NSMutableString string];
+    NSURL *url = [NSURL URLWithString:filePath];
+    NSData *data = [NSData dataWithContentsOfURL:url];
     
     // 组合NSData数据
     NSMutableData *dataM = [NSMutableData data];
@@ -46,7 +36,7 @@ RCT_EXPORT_METHOD(upload:(NSDictionary *)obj callback:(RCTResponseSenderBlock)ca
     // 组合二进制
     [dataM appendData:data];
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:0 timeoutInterval:2.0];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:uploadURL] cachePolicy:0 timeoutInterval:2.0];
     
     // 设置请求头，文件长度
     NSString *dataLength = [NSString stringWithFormat:@"%ld", (long)dataM.length];

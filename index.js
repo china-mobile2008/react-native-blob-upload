@@ -3,17 +3,8 @@
  * @flow
  */
 'use strict';
+import { NativeModules } from 'react-native';
 
-var NativeRNUploader = require('NativeModules').RNUploader;
-
-/**
- * High-level docs for the RNUploader iOS API can be written here.
- */
-
-var RNUploader = {
-  test: function() {
-    NativeRNUploader.test();
-  }
-};
+var RNUploader = NativeModules.RNUploader;
 
 module.exports = RNUploader;
