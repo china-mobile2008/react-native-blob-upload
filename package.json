@@ -1,0 +1,25 @@
+{
+  "name": "react-native-blob-upload",
+  "version": "1.0.0",
+  "description": "ios file blob upload",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/china-mobile2008/react-native-blob-upload.git"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "blob",
+    "upload"
+  ],
+  "author": "china_mobile2008@sina.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/china-mobile2008/react-native-blob-upload/issues"
+  },
+  "homepage": "https://github.com/china-mobile2008/react-native-blob-upload#readme"
+}
